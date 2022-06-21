@@ -1,4 +1,7 @@
 import React from "react";
+import CounterDisplay from "./CounterDisplay";
+import IncreaseButton from "./IncreaseButton";
+import ResetButton from "./ResetButton";
 
 class CounterApp extends React.Component {
   constructor(props) {
@@ -8,17 +11,21 @@ class CounterApp extends React.Component {
     this.state = {
       count: 0,
     };
+
+    // binding event handler
+    this.onIncreaseEventHandler = this.onIncreaseEventHandler.bind(this);
+    this.onResetEventHandler = this.onResetEventHandler.bind(this);
   }
 
   onIncreaseEventHandler() {
     this.setState((previousState) => {
       return {
-        count: previousState + 1,
+        count: previousState.count + 1,
       };
     });
   }
 
-  onIncreaseEventHandler() {
+  onResetEventHandler() {
     this.setState(() => {
       return {
         count: 0,
@@ -29,7 +36,9 @@ class CounterApp extends React.Component {
   render() {
     return (
       <div>
-        <p>TODO</p>
+        <IncreaseButton increase={this.onIncreaseEventHandler} />
+        <CounterDisplay count={this.state.count} />
+        <ResetButton reset={this.onResetEventHandler} />
       </div>
     );
   }
