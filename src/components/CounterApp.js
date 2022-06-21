@@ -10,6 +10,22 @@ class CounterApp extends React.Component {
     };
   }
 
+  onIncreaseEventHandler() {
+    this.setState((previousState) => {
+      return {
+        count: previousState + 1,
+      };
+    });
+  }
+
+  onIncreaseEventHandler() {
+    this.setState(() => {
+      return {
+        count: 0,
+      };
+    });
+  }
+
   render() {
     return (
       <div>
